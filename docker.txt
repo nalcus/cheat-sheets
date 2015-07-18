@@ -1,0 +1,63 @@
+docker
+
+
+copy an image from docker to local machine
+docker pull <image name> 
+
+
+
+docker build -t ouruser/sinatra:v2 .
+
+
+this will run the docker image and give you a bash shell
+docker run -i -t dpayne0220/nmessage bash
+
+docker commit --change "ENV DEBUG true" c3f279d17e0a SvenDowideit/testimage:version3 
+
+docker push dpayne0220/nmessage
+
+docker pull ouruser/sinatra@cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf
+
+
+
+
+
+docker pull maglnet/docker-zf2
+
+run this command from the root of your zend directory, and it will pipe server output to boot2docker ip on port 8080
+
+docker run -d -p 8080:80 -v $(pwd):/zf2-app maglnet/docker-zf2
+
+
+
+install boot2docker
+
+https://github.com/boot2docker/osx-installer/releases/tag/v1.7.1
+
+
+
+click boot2docker icon to open docker terminal for all 
+
+
+set up dockerhub account:
+
+docker login
+
+
+PM me your docker username so I can add you to contributors before you try the next steps.
+
+
+get docker image
+
+docker pull dpayne0220/tm-mrs-cms:latest
+
+
+run the server
+
+docker run -p 8080:80 dpayne0220/tm-mrs-cms
+
+
+
+to find ip: boot2docker ip
+
+http://<dockerip:8080>
