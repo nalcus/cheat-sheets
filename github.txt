@@ -1,0 +1,15 @@
+create a new remote repo:
+-------------------------
+(from the project dir:)
+
+$ git init
+
+$ git add .
+
+$ git commit -m 'blah blah commit comment'
+
+$ git remote add origin <remote.repository.URL>
+
+$ git remote -v
+
+$ git push origin master
