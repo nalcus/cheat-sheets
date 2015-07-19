@@ -11,9 +11,49 @@ hello world app:
 add platforms:
 --------------
 (within the project folder)
+(mac)
 
   $ cordova platform add ios
   $ cordova platform add amazon-fireos
   $ cordova platform add android
   $ cordova platform add blackberry10
   $ cordova platform add firefoxos
+
+(win)
+  $ cordova platform add wp8
+   $ cordova platform add windows
+   $ cordova platform add amazon-fireos
+   $ cordova platform add android
+   $ cordova platform add blackberry10
+   $ cordova platform add firefoxos
+
+check plats:
+------------
+
+  $ cordova platforms ls
+
+remove plats:
+-------------
+
+  $ cordova platform remove blackberry10
+    $ cordova platform rm amazon-fireos
+    $ cordova platform rm android
+ 
+build project:
+--------------
+
+  $ cordova build
+
+--or--
+
+  $ cordova build ios
+
+--short for--
+
+  $ cordova prepare ios
+  $ cordova compile ios
+
+run on native hardware:
+-----------------------
+
+& cordova run --device
