@@ -1,0 +1,47 @@
+Ruby on Rails
+
+restore terminal Window Group in OS X
+restore tabs in onenation folder in Chrome
+
+
+rails new <projectname>
+
+bin/rails generate controller name action
+
+
+rails g controller <name>
+rails g model <name>
+rails g scaffold <name> <field:type>
+
+running rake: run it through bundler
+
+bundler exec rake …
+
+
+rake commands:
+
+rake
+
+rake routes - show routing for app
+
+rails console: 
+
+rails c
+
+launch web server:
+
+rails s
+
+
+mongo:
+
+use gem mongoid
+
+
+
+show dbs
+
+
+db.<collection>.find()
+
+

@@ -1,0 +1,8 @@
+mongo
+
+start server:mongod
+
+
+console: mongo 
+db.col.insert({"a": 4}) 
+db.col.find().pretty()
