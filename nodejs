@@ -1,0 +1,25 @@
+Node.js
+
+sudo npm install express-generator
+express newProject
+
+#this drops down a basic framework
+app.js #application file
+/routes # controller directory
+/views  # views
+
+
+useful tutorials: 
+
+creating REST APIs in Express
+
+http://www.sitepoint.com/creating-restful-apis-express-4/
+
+couchDB integration
+
+http://expressjs.com/guide/database-integration.html#couchdb
+
+how to escape callback hell
+
+http://callbackhell.com/
+

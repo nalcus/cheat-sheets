@@ -1,63 +1,186 @@
-docker
+Docker
 
 
-copy an image from docker to local machine
-docker pull <image name> 
+CLI Reference
 
 
-
-docker build -t ouruser/sinatra:v2 .
-
-
-this will run the docker image and give you a bash shell
-docker run -i -t dpayne0220/nmessage bash
-
-docker commit --change "ENV DEBUG true" c3f279d17e0a SvenDowideit/testimage:version3 
-
-docker push dpayne0220/nmessage
-
-docker pull ouruser/sinatra@cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf
+    # copy an image from docker to local machine
+    docker pull <image name> 
 
 
 
+    docker build -t ouruser/sinatra:v2 .
 
 
-docker pull maglnet/docker-zf2
+    # this will run the docker image and give you a bash shell
+    docker run -i -t dpayne0220/nmessage bash
 
-run this command from the root of your zend directory, and it will pipe server output to boot2docker ip on port 8080
+    docker commit --change "ENV DEBUG true" c3f279d17e0a SvenDowideit/testimage:version3 
 
-docker run -d -p 8080:80 -v $(pwd):/zf2-app maglnet/docker-zf2
+    docker push dpayne0220/nmessage
 
-
-
-install boot2docker
-
-https://github.com/boot2docker/osx-installer/releases/tag/v1.7.1
-
-
-
-click boot2docker icon to open docker terminal for all 
-
-
-set up dockerhub account:
-
-docker login
-
-
-PM me your docker username so I can add you to contributors before you try the next steps.
-
-
-get docker image
-
-docker pull dpayne0220/tm-mrs-cms:latest
-
-
-run the server
-
-docker run -p 8080:80 dpayne0220/tm-mrs-cms
+    docker pull ouruser/sinatra@cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf
 
 
 
-to find ip: boot2docker ip
+Dockerizing from existing Images
 
-http://<dockerip:8080>
+
+    docker pull maglnet/docker-zf2
+
+    # run this command from the root of your zend directory, and it will pipe server output to boot2docker ip on port 8080
+
+    docker run -d -p 8080:80 -v $(pwd):/zf2-app maglnet/docker-zf2
+
+
+
+Quick Start
+
+
+    install boot2docker
+
+    https://github.com/boot2docker/osx-installer/releases/tag/v1.7.1
+
+
+
+    click boot2docker icon to open docker terminal for all 
+
+
+    set up dockerhub account:
+
+    docker login
+
+
+    PM me your docker username so I can add you to contributors before you try the next steps.
+
+
+    get docker image
+
+    docker pull dpayne0220/non-exiistant-repo
+
+
+    run the server
+
+    docker run -p 8080:80 dpayne0220/non-exiistant-repo
+
+
+
+    to find ip: boot2docker ip
+
+    http://<dockerip:8080>
+
+
+
+
+
+
+
+DOCKERFILES
+
+    Make a file called Dockerfile in the project root
+
+
+
+        #download centos image
+
+    FROM ubuntu:latest
+
+        #set as Author of image
+
+    MAINTAINER Daniel Payne <daniel@havenagency.com>
+
+        #set environment variable
+
+    ENV foo=/var/www/html
+
+        #run commands on the machine
+
+    RUN apt-get update && apt-get install -y —force-yes apache2
+
+    CMD [“executable”,”param 1”, “param 2”]
+
+
+
+        #copy files like COPY, but ADD allows urls, and will unpack a recognized compression format
+
+    ADD . ${foo}
+
+    VOLUME [“/path/on/image”]   # or ${foo}
+
+        #WORKDIRchanges the working directory for any RUN, CMD, or other command
+
+    WORKDIR ${foo}
+
+        #RUN runs at build time to assemble dependancies or any other environment related command
+
+    RUN npm update
+
+    RUN npm install -g bower
+
+    ONBUILD RUN 
+
+        #Exposes a port on the image to docker, allowing docker to expose that port to the host using the -p / -P command line arguments
+
+    EXPOSE 80
+
+        #ENTRYPOINT specifies the command that is run each time the image is run, CMD specifies default parameters for the entrypoint
+
+    #ENTRYPOINT [“command”,”param1”,”param2"]
+
+    #ENTRYPOINT command param1 param2
+
+    #ENTRYPOINT /usr/local/startscript.sh allows for custom behavior of the docker image from the command line
+
+    ENTRYPOINT [“/usr/bin/mongod”]
+
+    CMD [“—help”]
+
+—————————————————
+
+startscript.sh
+
+#!/bin/bash
+
+set -e
+
+if [“$1” = ‘postgres’]; then
+
+	chown -R postgres “$PGDATA”
+
+
+
+	if [-z “${ls -A “$PGDATA”)” ]; then
+
+		gosu postgres initdb
+
+	fi
+
+
+
+	exec gosu postgres “$@“
+
+fi
+
+
+
+
+
+--------------------------------------
+
+DOCKERIGNORE
+
+Make a file called .dockerignore in project root
+
+*/temp*
+
+temp?
+
+*.md
+
+
+
+
+
+
+
+

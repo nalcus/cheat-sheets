@@ -17,3 +17,9 @@ add platforms:
   $ cordova platform add android
   $ cordova platform add blackberry10
   $ cordova platform add firefoxos
+
+
+use ionic library for best ui components in hybrid app
+
+use native transitions plugin to test and see if native transitions are smoother than ionic transitions
+
