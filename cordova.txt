@@ -38,7 +38,7 @@ remove plats:
   $ cordova platform remove blackberry10
     $ cordova platform rm amazon-fireos
     $ cordova platform rm android
- 
+
 build project:
 --------------
 
@@ -56,4 +56,4 @@ build project:
 run on native hardware:
 -----------------------
 
-& cordova run --device
+$ cordova run --device
